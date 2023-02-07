@@ -42,7 +42,8 @@ public class BatchConfigCard {
     private SynchronizedItemStreamWriter<CardModel> xmlWriter;
 
     @Autowired
-    private TaskExecutor taskExecutor;
+    @Qualifier("taskExecutor_Card")
+    private org.springframework.core.task.TaskExecutor asyncTaskExecutor;
 
 
 
@@ -68,7 +69,7 @@ public class BatchConfigCard {
                         return StepExecutionListener.super.afterStep(stepExecution);
                     }
                 })
-                .taskExecutor(taskExecutor)
+                .taskExecutor(asyncTaskExecutor)
                 .build();
     }
 
