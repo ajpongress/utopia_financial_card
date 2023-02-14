@@ -21,14 +21,14 @@ public class CardProcessor implements ItemProcessor<CardModel, CardModel> {
     // Tracks userID as primary Key and attaches card number to the key
     private final HashMap<Long, String> cardMap = new HashMap<>();
 
-    // Useful for additional jobs or steps
-    public void clearMap() {
-        cardMap.clear();
-    }
-
     private final Faker faker = new Faker();
 
     private static long cardCounter = 0;
+
+    public void clearAllTrackersAndCounters() {
+        cardMap.clear();
+        cardCounter = 0;
+    }
 
     // ----------------------------------------------------------------------------------
     // --                                METHODS                                       --
